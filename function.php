@@ -17,10 +17,10 @@ function ipadr() { //取得使用者IP
 }
 function logm($type,$t2,$msg) { //伺服器紀錄
     if(!empty($type) && !empty($msg) && !empty($t2)) {
-        if(is_file($_SERVER['DOCUMENT_ROOT'].'/server.log')) {
+        if(is_file('/server.log')) {
             $logfext = true;
         }
-        $file = fopen($_SERVER['DOCUMENT_ROOT'].'/server.log',"a+");
+        $file = fopen('/server.log',"a+");
         if(!empty($logfext) && $logfext = true) {
             fwrite($file,"\n".json_encode(array("type" => $type , "t2" => $t2 , "msg" => $msg , "time" => date("Y/m/d H:i:s") , "IP" => ipadr())));
         }else {
